@@ -6,9 +6,70 @@
   <title>Farm Fuel Coffee - Home</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-</head>
-<body class="espresso-bg">
 
+  <style>
+    /* 🔹 Card Styling */
+    .card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 320px; /* fix card height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* ensures image covers properly */
+      z-index: 0;
+    }
+
+    /* Dark overlay */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    /* Text inside the image */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      line-height: 1.5;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body class="espresso-bg">
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">☕ Farm Fuel Coffee</div>
@@ -20,7 +81,6 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-   
   </header>
 
   <!-- Hero Section -->
@@ -38,19 +98,27 @@
     <h2>Why Choose Farm Fuel?</h2>
     <div class="featured-grid">
       <div class="card">
-        <img src="images/coffee-cup.png" alt="Fresh Coffee">
-        <h3>Freshly Brewed</h3>
-        <p>Each cup is brewed on the spot to bring out rich flavors.</p>
+        <img src="fresh coffee.jpg" alt="Fresh Coffee">
+        <div class="card-content">
+          <h3>Freshly Brewed</h3>
+          <p>Each cup is brewed on the spot to bring out rich flavors.</p>
+        </div>
       </div>
+
       <div class="card">
-        <img src="images/coffee-beans.png" alt="Coffee Beans">
-        <h3>Organic Beans</h3>
-        <p>We source only the best organic beans, roasted to perfection.</p>
+        <img src="Coffee beans.jpg" alt="Coffee Beans">
+        <div class="card-content">
+          <h3>Organic Beans</h3>
+          <p>We source only the best organic beans, roasted to perfection.</p>
+        </div>
       </div>
+
       <div class="card">
-        <img src="images/coffee-cart.png" alt="Coffee Cart">
-        <h3>Local Love</h3>
-        <p>Our coffee cart brings joy and energy to Wallkill every morning.</p>
+        <img src="Coffee cart.jpg" alt="Coffee Cart">
+        <div class="card-content">
+          <h3>Local Love</h3>
+          <p>Our coffee cart brings joy and energy to Wallkill every morning.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -59,9 +127,9 @@
   <section class="page-section fade-in latte-bg">
     <h2>Our Aesthetic Blend</h2>
     <div class="gallery">
-      <img src="images/gallery1.jpg" alt="Coffee Pour">
-      <img src="images/gallery2.jpg" alt="Latte Art">
-      <img src="images/gallery3.jpg" alt="Coffee Cart">
+      <img src="coffee pour.jpg" alt="Coffee Pour">
+      <img src="latte art.jpg" alt="Latte Art">
+      <img src="coffee cart 2.jpg" alt="Coffee Cart">
     </div>
   </section>
 

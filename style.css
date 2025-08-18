@@ -93,17 +93,54 @@ h1, h2, h3 {
   margin-top: 2rem;
 }
 .card {
-  background: rgba(255,255,255,0.1);
-  padding: 2rem;
-  border-radius: 10px;
+  position: relative;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
   transition: transform 0.3s ease;
+  color: #fff;
 }
 .card:hover {
   transform: translateY(-5px);
 }
-.card img {
-  width: 60px;
-  margin-bottom: 1rem;
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* darker overlay for better readability */
+}
+.card-content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  color: #fff;
+  text-shadow: 0px 2px 6px rgba(0,0,0,0.9); /* makes text pop */
+}
+.card h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Example Backgrounds for Cards */
+.card.freshly-brewed {
+  background-image: url('images/freshly-brewed.jpg');
+}
+.card.organic-beans {
+  background-image: url('images/organic-beans.jpg');
+}
+.card.local-love {
+  background-image: url('images/local-love.jpg');
 }
 
 /* Gallery */
@@ -114,7 +151,7 @@ h1, h2, h3 {
   flex-wrap: wrap;
 }
 .gallery img {
-  width: 300px;
+  width: 200px;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
@@ -142,6 +179,14 @@ h1, h2, h3 {
   color: #3E2723;
   cursor: pointer;
   font-weight: bold;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.contact-form button:hover {
+  background: #A47551;
+  color: #fff;
 }
 
 /* Footer */
@@ -149,4 +194,44 @@ footer {
   padding: 1rem;
   text-align: center;
   background: rgba(0,0,0,0.5);
+}
+/* Cards */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  position: relative;
+  height: 250px; /* reduced height */
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: contain; /* prevents stretching */
+  background-position: center;
+  background-repeat: no-repeat; /* avoids tiling */
+  background-color: #222; /* fallback color */
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* overlay */
+}
+.card-content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  color: #fff;
+  text-shadow: 0px 2px 6px rgba(0,0,0,0.9);
 }

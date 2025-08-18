@@ -5,6 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farm Fuel Coffee - About</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* About Section Styling */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem auto;
+      max-width: 1100px;
+      padding: 2rem;
+    }
+
+    .about-section img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      object-fit: cover;
+    }
+
+    .about-text {
+      font-family: 'Roboto', sans-serif;
+      color: #3a2c2c;
+    }
+
+    .about-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #4a2c2a;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Story highlight cards */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .story-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .story-card img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .story-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .story-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body class="latte-bg">
 
@@ -23,9 +114,41 @@
 
   <!-- About Section -->
   <section class="page-section fade-in">
-    <h1>About Farm Fuel Coffee</h1>
-    <p>Farm Fuel Coffee started as a small cart in Wallkill, NY, with a simple mission: serve fresh, high-quality coffee with love. We believe in bringing people together over a warm cup of coffee brewed from ethically sourced beans.</p>
-    <img src="images/about-coffee.jpg" alt="About Coffee" class="about-img">
+    <div class="about-section">
+      <div class="about-text">
+        <h1>About Farm Fuel Coffee</h1>
+        <p>Farm Fuel Coffee began as a humble cart on the streets of Wallkill, NY. What started as one dream, one cart, and one pot of coffee has now grown into a community favorite. Our mission has always been simple — to fuel mornings, spark conversations, and create a space where coffee brings people together.</p>
+        <p>We source only the finest organic beans from trusted farmers who share our values of sustainability and care. Every cup is a story of passion, patience, and love for coffee.</p>
+      </div>
+      <div>
+        <img src="images/about-coffee.jpg" alt="About Coffee">
+      </div>
+    </div>
+
+    <!-- Story Highlight Section -->
+    <div class="story-grid">
+      <div class="story-card">
+        <img src="images/farmers.jpg" alt="Farmers">
+        <div class="story-content">
+          <h3>From Farm to Cup</h3>
+          <p>Our beans are handpicked by farmers who nurture each plant with dedication and respect for the land.</p>
+        </div>
+      </div>
+      <div class="story-card">
+        <img src="images/roasting.jpg" alt="Roasting Coffee">
+        <div class="story-content">
+          <h3>Roasted to Perfection</h3>
+          <p>We roast in small batches, bringing out unique flavors and aromas that make every sip memorable.</p>
+        </div>
+      </div>
+      <div class="story-card">
+        <img src="images/community.jpg" alt="Community">
+        <div class="story-content">
+          <h3>Community First</h3>
+          <p>From the cart to the café, our goal has always been to bring people together through coffee.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
