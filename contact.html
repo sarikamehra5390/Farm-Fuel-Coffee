@@ -8,20 +8,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
   <style>
-    /* Contact Page Styling - Cappuccino Theme */
+    /* Contact Page Styling - Cappuccino Theme - Custom overrides only */
     body {
       background: linear-gradient(135deg, #2c1e1a 0%, #3d2b24 100%); /* Cappuccino background */
-      color: #f5f5f5;
     }
     
     /* Cappuccino-specific accent colors */
     .btn {
-      background: linear-gradient(135deg, #7d5a42, #5d4231);
-      border: 1px solid #8e6b53;
+      background: #7d5a42;
     }
     
-    .btn:hover {
-      background: linear-gradient(135deg, #8e6b53, #7d5a42);
+    .btn:hover::before {
+      background: #e6d2c0;
     }
     
     h2::after {
@@ -30,55 +28,167 @@
     
     .contact-form input:focus, 
     .contact-form textarea:focus {
-      border-color: #e6d2c0;
-      box-shadow: 0 0 0 2px rgba(230, 210, 192, 0.25);
+      box-shadow: 0 0 0 2px #e6d2c0, inset 0 2px 5px rgba(0,0,0,0.1);
     }
-    
-    .contact-header {
-      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');
-      background-size: cover;
-      background-position: center;
-      height: 300px;
-      position: relative;
-      border-radius: 0 0 50% 50% / 15%;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-    
-    .contact-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
+  </style>
+</head>
+<body class="cappuccino-bg">
+      <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo"><i class="fas fa-mug-hot"></i> Farm Fuel Coffee</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <!-- Contact Header -->
+  <section class="hero contact-header">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you</p>
+    </div>
+  </section>
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(30, 18, 15, 0.7);
+      z-index: 1;
     }
     
-    .contact-header-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 100px;
-    }
-    
-    .contact-header h1 {
-      font-family: 'Sacramento', cursive;
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-      color: #FFD580;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .contact-header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
+  <!-- Contact Section -->
+  <section class="page-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h2>Get In Touch</h2>
+          <p class="subtitle">We'd love to hear from you</p>
+          
+          <div class="contact-info">
+            <div class="contact-info-card fade-in-section">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Visit Us</h3>
+              <p>123 Coffee Lane<br>Farmville, CA 90210</p>
+            </div>
+            
+            <div class="contact-info-card fade-in-section">
+              <i class="fas fa-phone"></i>
+              <h3>Call Us</h3>
+              <p>(555) 123-4567</p>
+            </div>
+            
+            <div class="contact-info-card fade-in-section">
+              <i class="fas fa-envelope"></i>
+              <h3>Email Us</h3>
+              <p>hello@farmfuelcoffee.com</p>
+            </div>
+          </div>
+        <div class="col-md-7">
+          <div class="contact-form fade-in-section">
+            <h3>Send Us a Message</h3>
+            <form>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject">
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-container fade-in-section">
+        <!-- Map placeholder - In a real site, you would embed a Google Map or similar here -->
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Interactive Map Coming Soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Farm Fuel Coffee</h3>
+          <p>Serving the community with freshly roasted, ethically sourced coffee since 2010.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Monday - Friday: 6am - 8pm<br>
+          Saturday: 7am - 8pm<br>
+          Sunday: 7am - 6pm</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>123 Coffee Lane<br>
+          Farmville, CA 90210<br>
+          (555) 123-4567<br>
+          hello@farmfuelcoffee.com</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Farm Fuel Coffee. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
       gap: 3rem;
       max-width: 1200px;
       margin: 0 auto;

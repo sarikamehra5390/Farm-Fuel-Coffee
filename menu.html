@@ -8,19 +8,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <style>
-    /* Menu Page Styling - Mocha Theme */
+    /* Menu Page Styling - Mocha Theme - Custom overrides only */
     body {
       background: linear-gradient(135deg, #241812 0%, #3a2a22 100%); /* Mocha background */
     }
     
     /* Mocha-specific accent colors */
     .btn {
-      background: linear-gradient(135deg, #5d3c28, #3d2a1c);
-      border: 1px solid #6e4d39;
+      background: #5d3c28;
     }
     
-    .btn:hover {
-      background: linear-gradient(135deg, #6e4d39, #5d3c28);
+    .btn:hover::before {
+      background: #a67b5b;
     }
     
     h2::after {
@@ -34,30 +33,44 @@
     .menu-item-price {
       color: #a67b5b;
     }
+  </style>
+</head>
+<body class="mocha-bg">
+
+
+
+
     
-    .menu-header {
-      height: 40vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      background: url('coffee-beans.jpg') center/cover no-repeat;
-      margin-top: 60px;
-      overflow: hidden;
-    }
-    
-    .menu-header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(30, 18, 15, 0.7);
-      z-index: 1;
-    }
-    
-    .menu-header-content {
+    <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo"><i class="fas fa-mug-hot"></i> Farm Fuel Coffee</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <!-- Menu Header -->
+  <section class="hero menu-header">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Our Menu</h1>
+      <p>Quality ingredients, expertly crafted drinks</p>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="page-section">
+    <div class="container">
+      <h2>Coffee Menu</h2>
+      <p class="subtitle">From bean to cup</p>
       max-width: 800px;
       padding: 2rem;
       position: relative;
