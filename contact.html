@@ -5,12 +5,342 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farm Fuel Coffee - Contact</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    /* Contact Page Styling - Cappuccino Theme */
+    body {
+      background: linear-gradient(135deg, #2c1e1a 0%, #3d2b24 100%); /* Cappuccino background */
+      color: #f5f5f5;
+    }
+    
+    /* Cappuccino-specific accent colors */
+    .btn {
+      background: linear-gradient(135deg, #7d5a42, #5d4231);
+      border: 1px solid #8e6b53;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #8e6b53, #7d5a42);
+    }
+    
+    h2::after {
+      background: #e6d2c0; /* Cappuccino foam color */
+    }
+    
+    .contact-form input:focus, 
+    .contact-form textarea:focus {
+      border-color: #e6d2c0;
+      box-shadow: 0 0 0 2px rgba(230, 210, 192, 0.25);
+    }
+    
+    .contact-header {
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      position: relative;
+      border-radius: 0 0 50% 50% / 15%;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    
+    .contact-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .contact-header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-top: 100px;
+    }
+    
+    .contact-header h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      color: #FFD580;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .contact-header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-info::before {
+      content: '☕';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 2rem;
+      background: #6F4E37;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      color: #FFD580;
+    }
+    
+    .contact-info h3::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, #FFD580, transparent);
+      bottom: -8px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .contact-info:hover h3::after {
+      width: 100%;
+    }
+    
+    .contact-info p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-details {
+      margin-top: 2rem;
+    }
+    
+    .contact-details .detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-details .detail:hover {
+      transform: translateX(10px);
+    }
+    
+    .contact-details .detail i {
+      font-size: 1.2rem;
+      color: #FFD580;
+      margin-right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-details .detail:hover i {
+      background: #FFD580;
+      color: #333;
+    }
+    
+    .contact-form-container {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .map-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 3rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      border: 3px solid rgba(255, 213, 128, 0.3);
+      position: relative;
+    }
+    
+    .map-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 0 0 20px rgba(255, 213, 128, 0.2);
+      pointer-events: none;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .social-links a:hover {
+      background: #FFD580;
+      color: #333;
+      transform: translateY(-5px);
+      border: 1px solid #FFD580;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #FFD580;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 213, 128, 0.3);
+    }
+    
+    .contact-form button {
+      background: linear-gradient(135deg, #6F4E37, #4b3621);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-form button:hover {
+      background: linear-gradient(135deg, #FFD580, #d4a76a);
+      color: #333;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-form button i {
+      transition: transform 0.3s ease;
+    }
+    
+    .contact-form button:hover i {
+      transform: translateX(5px);
+    }
+    
+    .coffee-beans {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      opacity: 0.1;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .bean-1 {
+      top: 10%;
+      left: 5%;
+      transform: rotate(15deg);
+    }
+    
+    .bean-2 {
+      bottom: 20%;
+      right: 8%;
+      transform: rotate(-25deg);
+    }
+    
+    .bean-3 {
+      top: 40%;
+      right: 15%;
+      transform: rotate(45deg);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .map-container {
+        height: 300px;
+      }
+      
+      .contact-header h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
 </head>
 <body class="mocha-bg">
 
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">☕ Farm Fuel Coffee</div>
+    <div class="logo"><i class="fas fa-mug-hot"></i> Farm Fuel Coffee</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -19,18 +349,81 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
   </header>
+
+  <!-- Contact Header -->
+  <div class="contact-header">
+    <div class="contact-header-content">
+      <h1>Get in Touch</h1>
+      <p>We'd love to hear from you and answer any questions you might have</p>
+    </div>
+  </div>
 
   <!-- Contact Section -->
   <section class="page-section fade-in">
-    <h1>Contact Us</h1>
-    <p>Find our coffee cart in Wallkill, NY, or reach us online.</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+    <h2>Contact Us</h2>
+    <p class="subtitle">We're always brewing something special for you</p>
+    
+    <!-- Coffee bean decorations -->
+    <svg class="coffee-beans bean-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M512 64c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 78.3 364 32 448 32h32c17.7 0 32 14.3 32 32zM0 128c0-35.3 28.7-64 64-64h32c123.7 0 224 100.3 224 224v32 96c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zm96 64a160 160 0 1 1 320 0 160 160 0 1 1 -320 0z"/>
+    </svg>
+    <svg class="coffee-beans bean-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M512 64c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 78.3 364 32 448 32h32c17.7 0 32 14.3 32 32zM0 128c0-35.3 28.7-64 64-64h32c123.7 0 224 100.3 224 224v32 96c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zm96 64a160 160 0 1 1 320 0 160 160 0 1 1 -320 0z"/>
+    </svg>
+    <svg class="coffee-beans bean-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M512 64c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 78.3 364 32 448 32h32c17.7 0 32 14.3 32 32zM0 128c0-35.3 28.7-64 64-64h32c123.7 0 224 100.3 224 224v32 96c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zm96 64a160 160 0 1 1 320 0 160 160 0 1 1 -320 0z"/>
+    </svg>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <p>Have questions about our coffee, catering services, or just want to say hello? We're here to help and would love to hear from you!</p>
+        
+        <div class="contact-details">
+          <div class="detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Wallkill, NY</span>
+          </div>
+          <div class="detail">
+            <i class="fas fa-phone"></i>
+            <span>(845) 555-1234</span>
+          </div>
+          <div class="detail">
+            <i class="fas fa-envelope"></i>
+            <span>hello@farmfuelcoffee.com</span>
+          </div>
+          <div class="detail">
+            <i class="fas fa-clock"></i>
+            <span>Mon-Fri: 7am-4pm, Sat-Sun: 8am-3pm</span>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-form-container">
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="text" placeholder="Subject">
+          <textarea placeholder="Your Message" required rows="5"></textarea>
+          <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47798.35914855887!2d-74.18945241323242!3d41.60794075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89dd3a2a6c5a0001%3A0x9a5a3e8e1c1a9d9c!2sWallkill%2C%20NY!5e0!3m2!1sen!2sus!4v1625764298760!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -38,5 +431,6 @@
     <p>&copy; 2025 Farm Fuel Coffee. All Rights Reserved.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

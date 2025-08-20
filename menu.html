@@ -5,12 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Farm Fuel Coffee - Menu</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    /* Menu Page Styling - Mocha Theme */
+    body {
+      background: linear-gradient(135deg, #241812 0%, #3a2a22 100%); /* Mocha background */
+    }
+    
+    /* Mocha-specific accent colors */
+    .btn {
+      background: linear-gradient(135deg, #5d3c28, #3d2a1c);
+      border: 1px solid #6e4d39;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #6e4d39, #5d3c28);
+    }
+    
+    h2::after {
+      background: #a67b5b; /* Mocha color */
+    }
+    
+    .menu-category h3 {
+      color: #c68c63;
+    }
+    
+    .menu-item-price {
+      color: #a67b5b;
+    }
+    
+    .menu-header {
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: url('coffee-beans.jpg') center/cover no-repeat;
+      margin-top: 60px;
+      overflow: hidden;
+    }
+    
+    .menu-header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 18, 15, 0.7);
+      z-index: 1;
+    }
+    
+    .menu-header-content {
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    .menu-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .menu-header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    .menu-item {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid transparent;
+    }
+    
+    .menu-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-bottom-color: #FFD580;
+    }
+    
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: #FFD580;
+      transition: height 0.5s ease;
+    }
+    
+    .menu-item:hover::before {
+      height: 100%;
+    }
+    
+    .menu-item h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .menu-item h3::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #FFD580;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .menu-item:hover h3::after {
+      width: 100%;
+    }
+    
+    .menu-item p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .price {
+      font-weight: 600;
+      color: #FFD580;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .price .badge {
+      background: rgba(164, 117, 81, 0.3);
+      padding: 0.2rem 0.5rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #FFD580;
+    }
+    
+    .menu-category {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .menu-category h2 {
+      font-size: 2.2rem;
+      color: #fff;
+    }
+    
+    .menu-category::before {
+      content: '☕';
+      position: absolute;
+      font-size: 5rem;
+      opacity: 0.1;
+      top: -30px;
+      left: -20px;
+      z-index: -1;
+    }
+    
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body class="cappuccino-bg">
 
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">☕ Farm Fuel Coffee</div>
+    <div class="logo"><i class="fas fa-mug-hot"></i> Farm Fuel Coffee</div>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -21,25 +216,125 @@
     </nav>
   </header>
 
+  <!-- Menu Header -->
+  <section class="menu-header">
+    <div class="menu-header-overlay"></div>
+    <div class="menu-header-content">
+      <h1>Our Coffee Menu</h1>
+      <p>Discover our carefully crafted selection of premium coffee drinks and treats</p>
+    </div>
+  </section>
+
   <!-- Menu Section -->
   <section class="page-section fade-in">
-    <h1>Our Menu</h1>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <h3>Espresso</h3>
-        <p>Rich, bold, and smooth – our classic shot.</p>
+    <h2>Our Menu</h2>
+    <p class="subtitle">Crafted with love, served with passion</p>
+    
+    <div class="menu-category">
+      <h2><i class="fas fa-coffee"></i> Espresso Classics</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <h3>Espresso</h3>
+          <p>Rich, bold, and smooth – our signature shot pulled to perfection.</p>
+          <div class="price">$3.50 <span class="badge">Signature</span></div>
+        </div>
+        <div class="menu-item">
+          <h3>Americano</h3>
+          <p>Espresso diluted with hot water for a milder coffee experience.</p>
+          <div class="price">$4.00</div>
+        </div>
+        <div class="menu-item">
+          <h3>Macchiato</h3>
+          <p>Espresso "stained" with a dollop of silky steamed milk foam.</p>
+          <div class="price">$4.25</div>
+        </div>
+        <div class="menu-item">
+          <h3>Cortado</h3>
+          <p>Equal parts espresso and warm milk for perfect balance.</p>
+          <div class="price">$4.50</div>
+        </div>
+        <div class="menu-item">
+          <h3>Ristretto</h3>
+          <p>A short shot of espresso made with half the amount of water. Concentrated and intense.</p>
+          <div class="price">$3.75</div>
+        </div>
+        <div class="menu-item">
+          <h3>Doppio</h3>
+          <p>A double shot of espresso for those who need an extra kick to their day.</p>
+          <div class="price">$4.50</div>
+        </div>
       </div>
-      <div class="menu-item">
-        <h3>Latte</h3>
-        <p>Creamy milk blended with fresh espresso.</p>
+    </div>
+    
+    <div class="menu-category">
+      <h2><i class="fas fa-leaf"></i> Specialty Drinks</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <h3>Caramel Macchiato</h3>
+          <p>Vanilla-infused milk topped with espresso and caramel drizzle. Sweet and sophisticated.</p>
+          <div class="price">$5.75 <span class="badge">Favorite</span></div>
+        </div>
+        
+        <div class="menu-item">
+          <h3>Honey Cinnamon Latte</h3>
+          <p>Espresso with steamed milk, local honey, and a sprinkle of cinnamon. Comforting and aromatic.</p>
+          <div class="price">$5.50</div>
+        </div>
+        
+        <div class="menu-item">
+          <h3>Maple Pecan Cold Brew</h3>
+          <p>Smooth cold brew infused with maple syrup and topped with pecan-infused cream.</p>
+          <div class="price">$6.00</div>
+        </div>
+        
+        <div class="menu-item">
+          <h3>Lavender Vanilla Latte</h3>
+          <p>Espresso with steamed milk, house-made lavender syrup, and vanilla. Floral and elegant.</p>
+          <div class="price">$5.75</div>
+        </div>
+        
+        <div class="menu-item">
+          <h3>Cardamom Rose Cappuccino</h3>
+          <p>Cappuccino infused with cardamom and rose water. An exotic twist on a classic.</p>
+          <div class="price">$5.50</div>
+        </div>
+        
+        <div class="menu-item">
+          <h3>Farm Fuel Special</h3>
+          <p>Our secret blend of espresso, spices, and cream. A house specialty you won't find anywhere else.</p>
+          <div class="price">$6.50 <span class="badge">House Special</span></div>
+        </div>
       </div>
-      <div class="menu-item">
-        <h3>Cappuccino</h3>
-        <p>Perfectly balanced with milk foam on top.</p>
-      </div>
-      <div class="menu-item">
-        <h3>Mocha</h3>
-        <p>A chocolate twist for coffee lovers.</p>
+    </div>
+    
+    <div class="menu-category">
+      <h2><i class="fas fa-mug-hot"></i> Milk-Based Favorites</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <h3>Latte</h3>
+          <p>Creamy steamed milk blended with fresh espresso, topped with a light layer of foam.</p>
+          <div class="price">$5.00 <span class="badge">Popular</span></div>
+        </div>
+        <div class="menu-item">
+          <h3>Cappuccino</h3>
+          <p>Perfect balance of espresso, steamed milk, and thick, airy foam.</p>
+          <div class="price">$4.75</div>
+        </div>
+        <div class="menu-item">
+          <h3>Mocha</h3>
+          <p>Espresso and steamed milk infused with rich chocolate, topped with whipped cream.</p>
+          <div class="price">$5.50</div>
+        </div>
+        <div class="menu-item">
+          <h3>Flat White</h3>
+          <p>Espresso with velvety microfoam milk for a stronger coffee flavor.</p>
+          <div class="price">$5.25</div>
+        </div>
+        <div class="menu-item">
+          <h3>Breve</h3>
+          <p>Espresso with half-and-half instead of milk, creating a decadently rich experience.</p>
+          <div class="price">$5.75</div>
+        </div>
       </div>
     </div>
   </section>
@@ -48,6 +343,10 @@
   <footer>
     <p>&copy; 2025 Farm Fuel Coffee. All Rights Reserved.</p>
   </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
 
 </body>
 </html>

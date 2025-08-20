@@ -3,76 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Farm Fuel Coffee - Home</title>
+  <title>Farm Fuel Coffee</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
-    /* 🔹 Card Styling */
-    .card {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      height: 320px; /* fix card height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Espresso Theme for Homepage */
+    body {
+      background: linear-gradient(135deg, #1a0d0a 0%, #2c1e1a 100%); /* Espresso background */
     }
-
-    .card img {
+    
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+      height: 90vh;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+    
+    .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* ensures image covers properly */
-      z-index: 0;
+      background: linear-gradient(rgba(20, 10, 5, 0.7), rgba(40, 25, 15, 0.8));
     }
-
-    /* Dark overlay */
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      z-index: 1;
-    }
-
-    /* Text inside the image */
-    .card-content {
+    
+    .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
+      padding: 0 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.8rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       color: #fff;
-      padding: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.2;
     }
-
+    
+    /* Espresso-specific accent colors */
+    .btn {
+      background: linear-gradient(135deg, #4b2b1a, #301b10);
+      border: 1px solid #5c3a25;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #5c3a25, #4b2b1a);
+    }
+    
     .card-content h3 {
-      font-size: 1.6rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      color: #c87f46; /* Espresso crema color */
     }
-
-    .card-content p {
-      font-size: 1rem;
-      line-height: 1.5;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    
+    .card-content h3::after {
+      background: #c87f46;
     }
-
+    
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #FFD580, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 213, 128, 0.3);
+    }
+    
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+      filter: brightness(0.9);
+    }
+    
+    .card:hover img {
+      filter: brightness(1.1) saturate(1.2);
+      transform: scale(1.05);
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+      position: relative;
+    }
+    
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: #FFD580;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .card-content h3::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #FFD580;
+      transition: width 0.3s ease;
+    }
+    
+    .card:hover .card-content h3::after {
+      width: 100%;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin-top: 1rem;
+      margin-top: 3rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      height: 250px;
+    }
+    
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.1) saturate(1.2);
+    }
+    
+    .cta-section {
+      background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb');
+      padding: 6rem 2rem;
+      margin-top: 4rem;
+    }
+    
+    .coffee-quote {
+      text-align: center;
+      padding: 3rem 1rem;
+      margin: 4rem 0;
+      position: relative;
+    }
+    
+    .coffee-quote::before,
+    .coffee-quote::after {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: rgba(255, 213, 128, 0.2);
+      position: absolute;
+      line-height: 1;
+    }
+    
+    .coffee-quote::before {
+      top: -20px;
+      left: 0;
+    }
+    
+    .coffee-quote::after {
+      bottom: -70px;
+      right: 0;
+    }
+    
+    .coffee-quote blockquote {
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #f5f5f5;
+    }
+    
+    .coffee-quote cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: #FFD580;
+      font-style: normal;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+      
+      .coffee-quote blockquote {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
-
 <body class="espresso-bg">
+
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">☕ Farm Fuel Coffee</div>
+    <div class="logo"><i class="fas fa-mug-hot"></i> Farm Fuel Coffee</div>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -81,61 +268,138 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero fade-in">
-    <div class="overlay"></div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Fuel Your Day with Fresh Coffee</h1>
       <p>Wallkill's finest coffee, brewed with love and passion.</p>
-      <a href="menu.html" class="btn">☕ See Our Menu</a>
+      <a href="menu.html" class="btn"><i class="fas fa-coffee"></i> See Our Menu</a>
     </div>
   </section>
 
   <!-- Featured Section -->
-  <section class="page-section fade-in">
-    <h2>Why Choose Farm Fuel?</h2>
-    <div class="featured-grid">
-      <div class="card">
-        <img src="fresh coffee.jpg" alt="Fresh Coffee">
-        <div class="card-content">
-          <h3>Freshly Brewed</h3>
-          <p>Each cup is brewed on the spot to bring out rich flavors.</p>
+  <section id="featured" class="page-section espresso-bg fade-in-section">
+    <div class="container">
+      <h2>Our Coffee Specialties</h2>
+      <p class="subtitle">Handcrafted with love and precision</p>
+      <div class="featured-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80" alt="Latte Art">
+          <div class="card-content">
+            <h3>Artisan Lattes</h3>
+            <p>Our baristas create beautiful latte art with every cup, making each drink a visual masterpiece.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="card">
-        <img src="Coffee beans.jpg" alt="Coffee Beans">
-        <div class="card-content">
-          <h3>Organic Beans</h3>
-          <p>We source only the best organic beans, roasted to perfection.</p>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80" alt="Coffee Beans">
+          <div class="card-content">
+            <h3>Premium Beans</h3>
+            <p>We source only the finest beans from sustainable farms around the world.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="card">
-        <img src="Coffee cart.jpg" alt="Coffee Cart">
-        <div class="card-content">
-          <h3>Local Love</h3>
-          <p>Our coffee cart brings joy and energy to Wallkill every morning.</p>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Pour Over">
+          <div class="card-content">
+            <h3>Pour Over</h3>
+            <p>Experience the rich flavors of our carefully crafted pour-over coffee.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section class="page-section fade-in latte-bg">
-    <h2>Our Aesthetic Blend</h2>
+  <section class="page-section gallery-section fade-in">
+    <h2>Coffee Experience</h2>
+    <p class="subtitle">Moments worth savoring</p>
+    
     <div class="gallery">
-      <img src="coffee pour.jpg" alt="Coffee Pour">
-      <img src="latte art.jpg" alt="Latte Art">
-      <img src="coffee cart 2.jpg" alt="Coffee Cart">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Shop" class="lazy-image">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Beans" class="lazy-image">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Brewing" class="lazy-image">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Art" class="lazy-image">
+      </div>
+    </div>
+  </section>
+  
+  <!-- Coffee Quote Section -->
+  <div class="coffee-quote">
+    <blockquote>
+      "Coffee is a language in itself. It's a way of communicating. It's a way of saying, 'I care about you. I want you to have a good day.'"
+    </blockquote>
+    <cite>— Farm Fuel Coffee Philosophy</cite>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section fade-in">
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <h2>Visit Us Today</h2>
+      <p>Experience the Farm Fuel difference. Find us in Wallkill, NY.</p>
+      <a href="contact.html" class="btn"><i class="fas fa-map-marker-alt"></i> Find Us</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Farm Fuel Coffee. All Rights Reserved.</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Farm Fuel Coffee</h3>
+        <p>Serving the finest coffee in Wallkill since 2020. Our mission is to fuel your day with quality brews and warm hospitality.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Hours</h3>
+        <ul class="hours-list">
+          <li><span>Monday - Friday:</span> 7am - 4pm</li>
+          <li><span>Saturday:</span> 8am - 3pm</li>
+          <li><span>Sunday:</span> 8am - 3pm</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul class="contact-list">
+          <li><i class="fas fa-map-marker-alt"></i> Wallkill, NY</li>
+          <li><i class="fas fa-phone"></i> (845) 555-1234</li>
+          <li><i class="fas fa-envelope"></i> hello@farmfuelcoffee.com</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Farm Fuel Coffee. All Rights Reserved.</p>
+      <p>Made with <i class="fas fa-heart"></i> and lots of <i class="fas fa-coffee"></i></p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
