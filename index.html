@@ -8,95 +8,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
   <style>
-    /* Espresso Theme for Homepage - Custom overrides only */
+    /* Espresso Theme */
     body {
-      background: linear-gradient(135deg, #1a0d0a 0%, #2c1e1a 100%); /* Espresso background */
+      background: linear-gradient(135deg, #1a0d0a 0%, #2c1e1a 100%);
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #f5f5f5;
     }
-    
-    /* Espresso-specific accent colors */
+
+    /* Buttons */
     .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
       background: #4b2b1a;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
-    
+
     .btn:hover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background: #c87f46;
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
-    
-    h2::after {
-      background: #c87f46;
-    }
-    
-    .card-content h3 {
-      color: #c87f46; /* Espresso crema color */
-    }
-    
-    .card h3::after {
-      background-color: #c87f46;
-    }
-  </style>
-    
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 213, 128, 0.3);
-    }
-    
-    .card:hover::before {
+    .btn:hover::before {
       transform: scaleX(1);
     }
-    
-    .card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: all 0.4s ease;
-      filter: brightness(0.9);
-    }
-    
-    .card:hover img {
-      filter: brightness(1.1) saturate(1.2);
-      transform: scale(1.05);
-    }
-    
-    .card-content {
-      padding: 1.5rem;
-      position: relative;
-    }
-    
-    .card-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-      color: #FFD580;
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
       position: relative;
       display: inline-block;
     }
-    
-    .card-content h3::after {
-      content: '';
+    h2::after {
+      content: "";
       position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
+      bottom: -6px;
       left: 0;
-      background: #FFD580;
-      transition: width 0.3s ease;
+      width: 40%;
+      height: 3px;
+      background: #c87f46;
     }
-    
-    .card:hover .card-content h3::after {
-      width: 100%;
+
+    /* Featured Section Grid */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
-    
+
+    .card {
+      position: relative;
+      height: 380px;
+      border-radius: 15px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4); /* dark overlay */
+      z-index: 1;
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      padding: 1.5rem;
+      z-index: 2;
+      color: #fff;
+      text-align: left;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      color: #FFD580;
+      font-family: 'Playfair Display', serif;
+    }
+    .card-content p {
+      color: #f0e6d2;
+      line-height: 1.6;
+    }
+
+    /* Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
       margin-top: 3rem;
     }
-    
     .gallery-item {
       position: relative;
       overflow: hidden;
+    }
   </style>
 </head>
 <body class="espresso-bg">
@@ -133,22 +158,19 @@
       <h2>Our Coffee Specialties</h2>
       <p class="subtitle">Handcrafted with love and precision</p>
       <div class="featured-grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1037&q=80" alt="Latte Art">
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1037&q=80');">
           <div class="card-content">
             <h3>Artisan Lattes</h3>
             <p>Our baristas create beautiful latte art with every cup, making each drink a visual masterpiece.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80" alt="Coffee Beans">
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1061&q=80');">
           <div class="card-content">
             <h3>Premium Beans</h3>
             <p>We source only the finest beans from sustainable farms around the world.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Pour Over">
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1050&q=80');">
           <div class="card-content">
             <h3>Pour Over</h3>
             <p>Experience the rich flavors of our carefully crafted pour-over coffee.</p>
@@ -165,16 +187,16 @@
     
     <div class="gallery">
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Shop" class="lazy-image">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1050&q=80" alt="Coffee Shop" class="lazy-image">
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Beans" class="lazy-image">
+        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=1050&q=80" alt="Coffee Beans" class="lazy-image">
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Brewing" class="lazy-image">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1050&q=80" alt="Coffee Brewing" class="lazy-image">
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Coffee Art" class="lazy-image">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1050&q=80" alt="Coffee Art" class="lazy-image">
       </div>
     </div>
   </section>

@@ -8,32 +8,64 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <style>
-    /* About Page Styling - Latte Theme - Custom overrides only */
+    /* Global Latte Theme Background */
     body {
-        background: linear-gradient(135deg, #352318 0%, #4a3528 100%); /* Latte background */
-      }
-     
-      /* Latte-specific accent colors */
-    .btn {
-      background: #6b4c32;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #352318 0%, #4a3528 100%);
+      color: #fff;
     }
-    
-    .btn:hover::before {
-      background: #d4b59e;
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    
-    h2::after {
-      background: #d4b59e; /* Latte foam color */
+    .navbar .logo {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #FFD580;
     }
-    
-    .section-title {
-      color: #d4b59e;
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
     }
-  </style>
-</head>
-<body class="latte-bg">
+    .navbar nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
     }
-    
+    .navbar nav ul li a.active,
+    .navbar nav ul li a:hover {
+      color: #FFD580;
+    }
+    .mobile-menu-toggle {
+      display: none;
+    }
+
+    /* Hero Banner */
+    .about-hero {
+      position: relative;
+      background: url("coffee hero.jpg") center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .about-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
     .about-hero-content {
       max-width: 800px;
       padding: 2rem;
@@ -41,7 +73,6 @@
       z-index: 2;
       animation: fadeInUp 1s ease forwards;
     }
-    
     .about-hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
@@ -49,7 +80,6 @@
       margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
-    
     .about-hero p {
       font-size: 1.2rem;
       max-width: 600px;
@@ -57,7 +87,7 @@
       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
 
-    /* About Section Styling */
+    /* About Section */
     .about-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -68,7 +98,6 @@
       padding: 2rem;
       position: relative;
     }
-    
     .about-section::before {
       content: '☕';
       position: absolute;
@@ -79,7 +108,6 @@
       z-index: -1;
       transform: rotate(-15deg);
     }
-
     .about-section img {
       width: 100%;
       height: 450px;
@@ -89,24 +117,19 @@
       transition: all 0.5s ease;
       border: 5px solid rgba(255, 213, 128, 0.3);
     }
-    
     .about-section img:hover {
       transform: scale(1.03) translateY(-5px);
       box-shadow: 0 25px 50px rgba(0,0,0,0.4);
       border-color: rgba(255, 213, 128, 0.6);
     }
-
     .about-text {
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      padding: 2rem;
       background: rgba(0,0,0,0.2);
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding: 2rem;
       backdrop-filter: blur(5px);
       border-left: 3px solid #FFD580;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
-
     .about-text h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
@@ -115,7 +138,6 @@
       position: relative;
       display: inline-block;
     }
-    
     .about-text h2::after {
       content: '';
       position: absolute;
@@ -126,19 +148,17 @@
       left: 0;
       border-radius: 2px;
     }
-
     .about-text p {
       font-size: 1.1rem;
       line-height: 1.8;
       margin-bottom: 1.2rem;
     }
-    
     .about-text i {
       color: #FFD580;
       margin-right: 10px;
     }
 
-    /* Story highlight cards */
+    /* Story Cards */
     .story-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -146,41 +166,32 @@
       margin-top: 4rem;
       padding: 0 2rem;
     }
-
     .story-card {
       position: relative;
       border-radius: 15px;
       overflow: hidden;
       height: 350px;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all 0.5s ease;
       border: 3px solid transparent;
     }
-    
-    .story-card:hover {
-      transform: translateY(-10px) rotateY(3deg);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      border-color: rgba(255, 213, 128, 0.3);
-    }
-
     .story-card img {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: 0;
-      transition: all 0.5s ease;
+      transition: transform 0.5s ease;
       filter: saturate(1.2);
     }
-    
     .story-card:hover img {
       transform: scale(1.05);
     }
-
     .story-card::before {
       content: "";
       position: absolute;
@@ -189,11 +200,9 @@
       z-index: 1;
       transition: all 0.3s ease;
     }
-    
     .story-card:hover::before {
       background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.3) 100%);
     }
-
     .story-card::after {
       content: '';
       position: absolute;
@@ -206,11 +215,9 @@
       transition: transform 0.5s ease;
       z-index: 2;
     }
-    
     .story-card:hover::after {
       transform: scaleX(1);
     }
-
     .story-content {
       position: relative;
       z-index: 2;
@@ -219,16 +226,11 @@
       transform: translateY(20px);
       opacity: 0.9;
       transition: all 0.5s ease;
-      transform: translateY(10px);
-      opacity: 0.9;
-      transition: all 0.5s ease;
     }
-    
     .story-card:hover .story-content {
       transform: translateY(0);
       opacity: 1;
     }
-
     .story-content h3 {
       font-size: 1.6rem;
       margin-bottom: 0.8rem;
@@ -236,7 +238,6 @@
       position: relative;
       display: inline-block;
     }
-    
     .story-content h3::after {
       content: '';
       position: absolute;
@@ -248,34 +249,48 @@
       transform: translateX(-50%);
       transition: width 0.3s ease;
     }
-    
     .story-card:hover .story-content h3::after {
       width: 80%;
     }
-
     .story-content p {
       font-size: 1.05rem;
       line-height: 1.6;
-      font-family: 'Poppins', sans-serif;
     }
-    
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.7);
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile */
     @media (max-width: 768px) {
       .about-section {
         grid-template-columns: 1fr;
       }
-      
       .about-text {
         order: 2;
       }
-      
       .about-section img {
         order: 1;
         height: 300px;
       }
+      .about-hero h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
-<body class="latte-bg">
+<body>
 
   <!-- Navbar -->
   <header class="navbar">
@@ -298,7 +313,7 @@
     <div class="about-hero-overlay"></div>
     <div class="about-hero-content">
       <h1>Our Coffee Journey</h1>
-      <p>From bean to cup, discover the passion and craftsmanship behind every brew at Farm Fuel Coffee</p>
+      <p>From bean to cup, discover the passion and craftsmanship behind every brew at Farm Fuel Coffee.</p>
     </div>
   </section>
 
@@ -310,7 +325,7 @@
         <p><i class="fas fa-seedling"></i> Farm Fuel Coffee began as a humble cart on the streets of Wallkill, NY. What started as one dream, one cart, and one pot of coffee has now grown into a community favorite.</p>
         <p><i class="fas fa-heart"></i> Our mission has always been simple — to fuel mornings, spark conversations, and create a space where coffee brings people together.</p>
         <p><i class="fas fa-coffee"></i> We source our beans directly from sustainable farms, ensuring every cup supports both quality and ethical farming practices.</p>
-        <p>We source only the finest organic beans from trusted farmers who share our values of sustainability and care. Every cup is a story of passion, patience, and love for coffee.</p>
+        <p>Every sip tells a story of passion, patience, and love for coffee.</p>
       </div>
       <div>
         <img src="Coffee cart.jpg" alt="About Coffee">
